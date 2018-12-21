@@ -1,48 +1,47 @@
-var faker = require('faker');
-var mysql = require('mysql');
+const faker = require('faker');
+const mysql = require('mysql');
 
-var connection = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "root",
-	database: "reviews_db"
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'reviews_db',
 });
 
 connection.connect((err) => {
-	if (err) {
-		console.log(err)
-	}
-	else {
-		console.log('connected');
-	}
+  if (err) {
+    console.log(err);
+  }
 });
 
 
-var createProductQuery = 'INSERT INTO products (ID) VALUES (?)';
+const createProductQuery = 'INSERT INTO products (ID) VALUES (?)';
 
-for (var i = 0; i < 100; i++) {
-	connection.query(createProductQuery, [i], (err, results) => {
-		if (err ) {
-			console.log(err);
-		}
-	});
+for (let i = 0; i < 100; i += 1) {
+  const current = i;
+  connection.query(createProductQuery, [current], (err) => {
+    if (err ) {
+      console.log(err);
+    }
+  });
 }
 
-var createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verified, review_text, found_helpful, title, review_date) VALUES (?,?,?,?,?,?,?)';
+const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verified, review_text, found_helpful, title, review_date) VALUES (?,?,?,?,?,?,?)';
 
-for (var i = 0; i < 100; i++) {
-	for (var j = 0; j < 10; j++) {
-		var username = faker.internet.userName();
-		var productId = i;
-		var reviewText = faker.lorem.paragraph(1);
-		var foundHelpful = faker.random.number(0, 100)
-		var title = faker.lorem.words(3);
-		var date = faker.date.between('2010-01-01', '2018-12-1');
-		var fakeData = [productId, username, 1, reviewText, foundHelpful, title, date];
-		connection.query(createReviewQuery, fakeData, (err, result) => {
-			if (err) {
-				console.log(err);
-			}
-		})
-	}
+for (let i = 0; i < 100; i++) {
+  for (let j = 0; j < 10; j++) {
+    const username = faker.internet.userName();
+    const productId = i;
+    const reviewText = faker.lorem.paragraph(1);
+    const foundHelpful = faker.random.number(0, 100)
+    const title = faker.lorem.words(3);
+    const date = faker.date.between('2010-01-01', '2018-12-1');
+    const fakeData = [productId, username, 1, reviewText, foundHelpful, title, date];
+    connection.query(createReviewQuery, fakeData, (err) => {
+      if (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+      }
+    });
+  }
 }
