@@ -12,6 +12,7 @@ CREATE TABLE reviews (
 	username VARCHAR(25),
 	is_verified INT NOT NULL,
 	review_text TEXT,
+	score INT NOT NULL,
 	found_helpful INT,
 	title VARCHAR (50),
 	review_date DATE,

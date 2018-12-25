@@ -26,17 +26,18 @@ for (let i = 0; i < 100; i += 1) {
   });
 }
 
-const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verified, review_text, found_helpful, title, review_date) VALUES (?,?,?,?,?,?,?)';
+const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verified, review_text, score, found_helpful, title, review_date) VALUES (?,?,?,?,?,?,?,?)';
 
 for (let i = 0; i < 100; i++) {
   for (let j = 0; j < 10; j++) {
     const username = faker.internet.userName();
     const productId = i;
     const reviewText = faker.lorem.paragraph(1);
-    const foundHelpful = faker.random.number(0, 100)
+    const foundHelpful = Math.round((Math.random() * 25));
+    const score = (Math.random() * 5).toFixed(1);
     const title = faker.lorem.words(3);
     const date = faker.date.between('2010-01-01', '2018-12-1');
-    const fakeData = [productId, username, 1, reviewText, foundHelpful, title, date];
+    const fakeData = [productId, username, 1, reviewText, score, foundHelpful, title, date];
     connection.query(createReviewQuery, fakeData, (err) => {
       if (err) {
         // eslint-disable-next-line no-console
