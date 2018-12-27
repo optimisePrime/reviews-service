@@ -10,3 +10,5 @@ app.use(express.static(path.join(__dirname, 'public/index.html')));
 app.use(bodyParser());
 
 app.listen(port, () => { console.log(`listening on port ${port}`); });
+
+module.exports = app;
