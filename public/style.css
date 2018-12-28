@@ -27,21 +27,36 @@
     font-family: Roboto, Lato, "Pt Sans";
 }
 
-.star{
-    content: '\f005';
-    font-family: fontAwesome;
+.averageStars{
+    height: 21px;
+    width: 95px;
 }
 
-/* .star{
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    height: 20px;
-    width: 20px;
-    color: rgb(255, 174, 0);
-    background-color: rgb(255, 196, 0);
-    display: inherit;
-} */
 
-.starBorder{
+.averageReviewsStarArea{
+    padding-top: 6px;
+    margin-top: 0px;
+    margin-bottom:18px;
+}
+
+.averageReviewStarBorder{
     display: inline-block;
-    height: 25px;
+    width: 105px;
+    height: 22px;
+}
+
+.averageReviewsStarText{
+    display: inline-block;
+    font-family: Roboto, Lato, "Pt Sans";
+    font-size: 13px;
+    line-height: 19px;
+    margin-left: 10px
+}
+
+.reviewMenuHeader{
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.3;
+    color: #111;
+    padding:  0px;
 }
