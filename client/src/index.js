@@ -1,9 +1,14 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const AverageReviews = require('./average_reviews');
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+	  fetch('')
   }
   render(){
     return(
@@ -11,16 +16,10 @@ class App extends React.Component {
         <hr className="reviewBorderLine"></hr>
 		<div className="reviewGrid">	
 		  <div className="leftReviewGrid">
-		    Tommy Hilfiger Men's
+		    <AverageReviews />
 		    <hr className="reviewBorderLine"></hr>
 		    Tommy Hilfiger Men's
 		    <hr className="reviewBorderLine"></hr>
-		    <div className="starBorder">
-						<img src="https://s3.us-east-2.amazonaws.com/publicreviewsmodule/half-star.png"></img>
-		      <div className="star"></div>
-		      <div className="star"></div>
-		      <div className="star"></div>
-		    </div>
 		  </div>
 		  <div className="rightReviewGrid">
 		    Tommy Hilfiger Men's
@@ -30,5 +29,7 @@ class App extends React.Component {
 		)
 	}
 }
+
+ReactDOM.render(<App />, document.getElementById('root'));
 
 module.exports = App;
