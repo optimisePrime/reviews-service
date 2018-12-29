@@ -17,9 +17,6 @@ class App extends React.Component {
 		<div className="reviewGrid">	
 		  <div className="leftReviewGrid">
 		    <AverageReviews />
-		    <hr className="reviewBorderLine"></hr>
-		    Tommy Hilfiger Men's
-		    <hr className="reviewBorderLine"></hr>
 		  </div>
 		  <div className="rightReviewGrid">
 		    Tommy Hilfiger Men's

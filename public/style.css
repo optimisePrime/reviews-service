@@ -60,3 +60,113 @@
     color: #111;
     padding:  0px;
 }
+
+.reviewRatingBars{
+    width: 280px;
+    border-spacing: 0px;
+}
+
+.outerRatingBar{
+    border-radius: 1px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.1);
+    overflow: hidden;
+    background: #f2f2f2;
+    background: -webkit-linear-gradient(top,#eee,#f6f6f6);
+    background: linear-gradient(to bottom,#eee,#f6f6f6);
+    background-color: #f3f3f3;
+    height: 17px;   
+    width: 196px;
+}
+.ratingBarCell{
+    vertical-align: top;
+    padding-top: 0px;
+    padding-left:3px;
+    padding-right:3px;
+    height:19px;
+    width: 196px;
+    display: inline-block;
+}
+
+.innerRatingBar{
+    border-radius: 1px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.05);
+    background: #fb0;
+    background: -webkit-linear-gradient(top,#ffce00,#ffa700);
+    background: linear-gradient(to bottom,#ffce00,#ffa700);
+    background-color: #ffce00;
+    height: 100%;
+}
+
+.reviewBarWrapper{
+    width: 280px;
+    height: 21px;
+    padding: 1px 3px;
+    padding-top: 2px;
+    border-collapse: collapse;
+}
+
+.ratingBarLeftTextBox{
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    padding-right: 3px;
+    padding-bottom: 1px;
+    width:39px;
+    height:19px;
+}
+
+.ratingBarLeftText{
+    text-decoration: none;
+    color: #0066c0;
+    font-size: 13px;
+    line-height: 19px;
+    width: 33.31px;
+    height: 16px;
+    font-family: Roboto, Lato, "Pt Sans";
+}
+
+.ratingBarRightTextBox{
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+    white-space: nowrap;
+    padding-right: 0;
+    padding-left: 3px;
+    padding-bottom: 1px;
+    width: 33px;
+    height: 19px;
+}
+
+.ratingBarRightText{
+    color: #555;
+    font-family: Roboto, Lato, "Pt Sans";
+    height: 16px;
+    line-height: 19px;
+    font-size: 13px;
+}
+.ratingBarRightText:hover {
+    text-decoration: underline;
+}
+.ratingBarLeftText:hover {
+    text-decoration: underline;
+}
+
+.addReviewHeader{
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.255;
+    font-family: Roboto, Lato, "Pt Sans";
+    margin-bottom: 4px!important;
+    color: #111;
+    padding-bottom: 4px;
+}
+
+.addReviewBody{
+    margin-bottom: 18px!important;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Roboto, Lato, "Pt Sans";
+    display: block;
+    font-size: 13px;
+    color: #111;
+}

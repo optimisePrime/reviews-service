@@ -11,7 +11,8 @@
     "database": "mysql -u root -p <schema.sql",
     "faker": "node database/fake_data_generator.js",
     "start": "webpack --mode development",
-    "test": "jest"
+    "test": "jest",
+    "server": "nodemon server/index.js"
   },
   "dependencies": {
     "babel": "^6.23.0",
