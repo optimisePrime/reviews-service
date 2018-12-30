@@ -9,8 +9,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser());
 
-app.get('/reviews/:productid', (req, res) => {
-  const productId = req.params.productid;
+app.get('/reviews', (req, res) => {
+  const productId = 1;
   const thisQuery = 'SELECT * FROM reviews WHERE product_id = ?';
   db.query(thisQuery, [productId], (error, results) => {
     if (error) {
