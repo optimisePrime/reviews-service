@@ -76,7 +76,7 @@ class App extends React.Component {
                         firstDate = ([firstDateArray[0], firstDateArray[1], firstDateArray[2].slice(0,2)]).join('');
                         firstDateNumber = Number(firstDate);
                         secondDateArray = b.review_date.split('-');
-                        secondDate = ([secondDateArray[0], firstDateArray[1], secondDateArray[2].slice(0, 2)]).join('');
+                        secondDate = ([secondDateArray[0], secondDateArray[1], secondDateArray[2].slice(0, 2)]).join('');
                         secondDateNumber = Number(secondDate);
                         if (firstDateNumber > secondDateNumber) {
                             return -1
