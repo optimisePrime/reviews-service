@@ -1,4 +1,4 @@
-DROP DATABASE reviews_db;
+DROP DATABASE IF EXISTS reviews_db;
 CREATE DATABASE IF NOT EXISTS reviews_db;
 
 
