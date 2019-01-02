@@ -269,6 +269,8 @@
 
 .reviewSorterDropdown{
     transition: all .1s linear;
+    appearance: none;
+    -webkit-appearance: none;
     line-height: 19px;
     color: #111;
     cursor: default;
@@ -287,6 +289,7 @@
     outline: 0;
     padding: 0 10px 0 11px;
     text-align: center;
+    vertical-align: middle;
     width: 120px;
     background: transparent;
 }

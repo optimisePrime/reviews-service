@@ -24,7 +24,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:3001/reviews').then((data) => {
+        fetch('http://127.0.0.1:3001/reviews/all/1').then((data) => {
             data.json().then((results) => {
                 let newState = Object.assign({}, this.state);
                 for (let i = 0; i < results.length; i++) {
@@ -57,6 +57,7 @@ class App extends React.Component {
         newState.showLimited = false;
         this.setState(newState);
     }
+
     handleSort(event){
         let newState = Object.assign({}, this.state);
         for (let i = 0; i < event.currentTarget.children.length; i++) {
