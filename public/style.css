@@ -147,9 +147,11 @@
 }
 .ratingBarRightText:hover {
     text-decoration: underline;
+    color: #c45500!important;
 }
 .ratingBarLeftText:hover {
     text-decoration: underline;
+    color: #c45500!important;
 }
 
 .addReviewHeader{
@@ -186,6 +188,13 @@
     vertical-align: middle;
     width:100%;
 }
+
+.addReviewButtonInner:hover{
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+    outline: 0;
+}
+
 .addReviewButtonInner{
     display: block;
     position: relative;
@@ -209,4 +218,264 @@
 
 .addReviewButtonWrapper{
     width:300px;
+}
+
+.reviewAreaContainer{
+    width:100%
+}
+
+.reviewHeaderText{
+    font-weight: 700;
+    font-family: Roboto, Lato, "Pt Sans";
+    font-size: 13px!important;
+    line-height: 19px!important;
+}
+
+.reviewSorterBox{
+    background: #e7e9ec;
+    border-radius: 3px;
+    border-color: #ADB1B8 #A2A6AC #8D9096;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    text-decoration: none!important;
+    vertical-align: middle;
+    width: 135px;
+    margin-bottom: 10px;
+
+}
+
+.reviewSorterBox:active{
+    background: #e7e9ec;
+    border-radius: 3px;
+    border-color: #ADB1B8 #A2A6AC #8D9096;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    text-decoration: none!important;
+    vertical-align: middle;
+    width: 135px;
+    margin-bottom: 10px;
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+    outline: 0;
+}
+
+.reviewSorterDropdown{
+    transition: all .1s linear;
+    line-height: 19px;
+    color: #111;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+    border-radius: 2px;
+    color: #111;
+    font-family: Roboto, Lato, "Pt Sans";
+    border: 0;
+    display: block;
+    font-size: 13px;
+    line-height: 29px;
+    margin: 0;
+    outline: 0;
+    padding: 0 10px 0 11px;
+    text-align: center;
+    width: 120px;
+    background: transparent;
+}
+
+.reviewSortArrow{
+    width: 10px;
+    height: 8px;
+    float: right;
+    padding-right: 4px;
+    padding-top: 6px;
+    background: transparent;
+}
+
+.singleReviewWrapper{
+    margin-bottom: 22px;
+    width:100%;
+    height: 230px;
+}
+.singleReviewUsernameAndPicture{
+    display: inline-block;
+    width: 100%;
+    height: 34px;
+    margin-bottom:6px;
+}
+
+.singleReviewUsername{
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    height:34px;
+
+}
+
+.userProfilePic{
+    height: 29px;
+    width: 34px;
+    padding-right: 9px;
+}
+
+.ratingAndTitle{
+    height:19px;
+    width:100%;
+    display:block;
+}
+
+.singleReviewStar{
+    cursor: pointer;
+    height:16px;
+    width:80px;
+}
+
+.singleReviewTitle{
+    font-weight: 700;
+    font-size: 13px;
+    padding-left: 5px;
+    vertical-align: top;
+    height: 16px;
+    cursor: pointer;
+}
+
+.singleReviewTitle:hover {
+    text-decoration: underline;
+    color: #c45500!important;
+}
+
+.reviewDate{
+    font-size: 13px!important;
+    line-height: 19px!important;
+    color: #555!important;
+
+}
+
+.reviewVerification{
+    display: inline;
+    font-size: 11px!important;
+    line-height: 1.465!important;
+    color: #c45500!important;
+    font-weight: 700!important;
+}
+
+.verificationWrapper{
+    margin-bottom: 6px;
+    height: 19px;
+}
+
+.reviewText{
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 13px;
+    line-height: 19px;
+    color: #111;
+}
+
+.reviewTextSeparator{
+    display: inline;
+    font-size: 13px;
+    margin-top: -2px;
+    margin-right: 8.75px;
+    margin-left:8.75px;
+    width: 1px;
+    line-height: 0;
+    height: 14px;
+    vertical-align: middle;
+    font-style: italic;
+    color: #ddd;
+}
+
+.reviewHelpful{
+    margin-bottom: 10px;
+    width: 100%;
+    color: #767676!important;
+    font-size: 13px!important;
+    line-height: 19px!important;
+}
+
+.helpfulButtonOuter{
+    background: #e7e9ec;
+    border-radius: 3px;
+    border-color: #ADB1B8 #A2A6AC #8D9096;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    text-decoration: none!important;
+    vertical-align: middle;
+    width:100px;
+    height: 31px;
+    margin-right: 5px;
+}
+.helpfulButtonOuter:hover{
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+    outline: 0;
+}
+
+.helpfulButtonInner{
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 29px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+    border-radius: 2px;
+    background-color: transparent;
+    color: #111;
+    font-family: Roboto, Lato, "Pt Sans";
+    border: 0;
+    display: block;
+    font-size: 13px;
+    line-height: 29px;
+    margin: 0;
+    outline: 0;
+    padding: 0 10px 0 11px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.singleReviewCommentReport{
+    display: inline;
+    color: #555;
+    font-weight: 400!important;
+    font-style: normal!important;
+    text-transform: none!important;
+    text-decoration: none!important;
+    font-size: 13px!important;
+    line-height: 19px!important;
+}
+.singleReviewCommentReport:hover{
+    color: #c45500;
+    cursor: pointer;
+}
+
+.seeAllReviewsWrapper{
+    margin-bottom: 22px;
+    font-size: 13px;
+    line-height: 19px;
+}
+.seeAllReviews{
+    font-size: 13px;
+    line-height: 19px;
+    text-decoration: none;
+    color: #0066c0;
+    font-weight: 700;
+    cursor:pointer;
+}
+
+.seeAllReviews:hover{
+    text-decoration: underline;
+    color: #c45500;
 }
