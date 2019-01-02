@@ -9,8 +9,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser());
 
-app.get('/reviews', (req, res) => {
-  const productId = 1;
+app.get('/reviews/all/:productid', (req, res) => {
+  const productId = req.params.productid;
   const thisQuery = 'SELECT * FROM reviews WHERE product_id = ?';
   db.query(thisQuery, [productId], (error, results) => {
     if (error) {
@@ -35,6 +35,26 @@ app.get('/reviews/average/:productid', (req, res) => {
       const average = totalScore / results.length;
       const responseObject = {"averageScore": average, "totalReviews": results.length}
       res.send(responseObject);
+    }
+  });
+});
+
+app.post('/reviews/helpful', (req, res) => {
+  const thisId = req.params.reviewId;
+  const thisQuery = 'UPDATE reviews SET found_helpful = found_helpful + 1 WHERE id = ?';
+  console.log('post recieved');
+  db.query(thisQuery, [thisId], (err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      const secondQuery = 'SELECT * FROM reviews WHERE id = ?';
+      db.query(secondQuery, [thisId], (error, results) => {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(results);
+        }
+      });
     }
   });
 });
