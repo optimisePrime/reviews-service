@@ -26,7 +26,7 @@ for (let i = 0; i < 100; i += 1) {
   });
 }
 
-const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verified, review_text, score, found_helpful, title, review_date) VALUES (?,?,?,?,?,?,?,?)';
+const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verified, review_text, score, found_helpful, title, review_date) VALUES (?,?,?,?,?,?,?)';
 
 for (let i = 0; i < 100; i++) {
   for (let j = 0; j < 10; j++) {
