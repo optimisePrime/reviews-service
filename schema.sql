@@ -1,4 +1,6 @@
+DROP DATABASE reviews_db;
 CREATE DATABASE IF NOT EXISTS reviews_db;
+
 
 USE reviews_db;
 

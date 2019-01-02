@@ -36,6 +36,7 @@ for (let i = 0; i < 100; i++) {
     const foundHelpful = Math.round((Math.random() * 25));
     const score = (Math.random() * 5).toFixed(1);
     const title = faker.lorem.words(3);
+    
     const date = faker.date.between('2010-01-01', '2018-12-1');
     const fakeData = [productId, username, 1, reviewText, score, foundHelpful, title, date];
     connection.query(createReviewQuery, fakeData, (err) => {

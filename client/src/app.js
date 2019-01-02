@@ -1,6 +1,9 @@
 const React = require('react');
 const AverageReviews = require('./average_reviews');
 const ReviewArea = require('./review_area')
+const Router = require('react-router-dom').Router
+const Route = require('react-router-dom').Route
+const Switch = require('react-router-dom').Switch
 
 class App extends React.Component {
     constructor(props) {
@@ -24,7 +27,12 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:3001/reviews/all/1').then((data) => {
+        let test = window.location.href;
+        console.log(test)
+        test = test.split('/');
+        product = test[test.length-2];
+
+        fetch('http://127.0.0.1:3001/reviews/all/' + product).then((data) => {
             data.json().then((results) => {
                 let newState = Object.assign({}, this.state);
                 for (let i = 0; i < results.length; i++) {

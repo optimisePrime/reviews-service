@@ -2,12 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../database/db.js');
+const Cors = require('cors');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(Cors());
+app.use('/:productid', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser());
+
 
 app.get('/reviews/all/:productid', (req, res) => {
   const productId = req.params.productid;
