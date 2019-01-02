@@ -16,11 +16,6 @@ module.exports = {
         use: { loader: 'babel-loader' },
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
-      {
-        test: /\.(jpe?g|png|gif|mp3)$/i,
-        include: SRC,
-        loaders: ['file-loader']
-      },
     ],
   },
   watch: true,
