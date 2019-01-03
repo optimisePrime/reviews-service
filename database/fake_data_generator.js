@@ -1,5 +1,4 @@
 const faker = require('faker');
-const mysql = require('mysql');
 const connection = require('./db.js');
 
 

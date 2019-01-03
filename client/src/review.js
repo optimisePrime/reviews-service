@@ -75,8 +75,8 @@ const Review = function (props) {
             <div className="reviewText">{props.review.review_text}</div>
             <div className="reviewComments">
                 <div className="reviewHelpful">{props.review.found_helpful + " " + personOrPeople + " found this review helpful"}</div>
-                <div className="helpfulButtonOuter">
-                    <div className="helpfulButtonInner">
+                <div className="helpfulButtonOuter" >
+                    <div className="helpfulButtonInner" onClick={() => { props.helpful(props.review.id) }}>
                         Helpful
                 </div>
                 </div>

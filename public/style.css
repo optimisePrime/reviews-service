@@ -265,33 +265,28 @@
     border-color: #e77600;
     box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
     outline: 0;
+    height: 20px;
+    z-index: -1;
 }
 
 .reviewSorterDropdown{
     transition: all .1s linear;
     appearance: none;
+    display: inline;
     -webkit-appearance: none;
     line-height: 19px;
     color: #111;
     cursor: default;
-    position: relative;
     overflow: hidden;
-    height: 20px;
     box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
-    border-radius: 2px;
     color: #111;
     font-family: Roboto, Lato, "Pt Sans";
     border: 0;
-    display: block;
     font-size: 13px;
-    line-height: 29px;
-    margin: 0;
     outline: 0;
-    padding: 0 10px 0 11px;
     text-align: center;
-    vertical-align: middle;
-    width: 120px;
     background: transparent;
+    z-index: 2;
 }
 
 .reviewSortArrow{
@@ -301,6 +296,7 @@
     padding-right: 4px;
     padding-top: 6px;
     background: transparent;
+    z-index: 1;
 }
 
 .singleReviewWrapper{

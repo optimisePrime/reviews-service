@@ -42,7 +42,7 @@ app.get('/reviews/average/:productid', (req, res) => {
   });
 });
 
-app.post('/reviews/helpful', (req, res) => {
+app.post('/reviews/helpful/:reviewId', (req, res) => {
   const thisId = req.params.reviewId;
   const thisQuery = 'UPDATE reviews SET found_helpful = found_helpful + 1 WHERE id = ?';
   console.log('post recieved');

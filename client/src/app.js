@@ -24,6 +24,7 @@ class App extends React.Component {
         this.handleNumberStarsClick = this.handleNumberStarsClick.bind(this);
         this.showAllReviews = this.showAllReviews.bind(this);
         this.handleSort = this.handleSort.bind(this);
+        this.handleHelpful = this.handleHelpful.bind(this);
     }
 
     componentDidMount() {
@@ -45,6 +46,22 @@ class App extends React.Component {
                 this.setState(newState);
             })
         })
+    }
+
+    handleHelpful(value) {
+        console.log(value)
+        let newState = Object.assign({}, this.state);
+        for (let i = 0; i < newState.reviews.length; i++) {
+            if (newState.reviews[i].id === value) {
+                console.log(true);
+                newState.reviews[i].found_helpful += 1;
+                newState.filteredReviews = newState.reviews;
+                this.setState(newState);
+                fetch('http://127.0.0.1:3001/reviews/helpful/' + value, {
+                    method: 'POST',
+                });
+            }
+        }
     }
 
     handleNumberStarsClick(value) {
@@ -109,7 +126,7 @@ class App extends React.Component {
                         <AverageReviews numberStarsClick={this.handleNumberStarsClick} averageScore={this.state.averageScore} numberStars={this.state.numberStars} numberReviews={this.state.reviews.length} />
                     </div>
                     <div className="rightReviewGrid" style={{ paddingLeft: "17.188px", }}>
-                        <ReviewArea handleSort={this.handleSort}reviews={this.state.filteredReviews} limited={this.state.showLimited} extend={this.showAllReviews} />
+                        <ReviewArea helpful={this.handleHelpful} handleSort={this.handleSort}reviews={this.state.filteredReviews} limited={this.state.showLimited} extend={this.showAllReviews} />
                     </div>
                 </div>
             </div>
