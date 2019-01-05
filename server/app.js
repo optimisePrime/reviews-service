@@ -11,7 +11,6 @@ app.use('/:productid', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser());
 
-
 app.get('/reviews/all/:productid', (req, res) => {
   const productId = req.params.productid;
   const thisQuery = 'SELECT * FROM reviews WHERE product_id = ?';

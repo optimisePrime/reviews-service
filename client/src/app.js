@@ -1,8 +1,6 @@
 const React = require('react');
 const AverageReviews = require('./average_reviews');
 const ReviewArea = require('./review_area')
-const Router = require('react-router-dom').Router
-const Route = require('react-router-dom').Route
 const Switch = require('react-router-dom').Switch
 
 class App extends React.Component {

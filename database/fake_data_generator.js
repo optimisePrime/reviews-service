@@ -1,7 +1,6 @@
 const faker = require('faker');
 const connection = require('./db.js');
 
-
 const createProductQuery = 'INSERT INTO products (ID) VALUES (?)';
 
 for (let i = 1; i <= 100; i += 1) {
