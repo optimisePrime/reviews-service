@@ -1,7 +1,5 @@
 const faker = require('faker');
-const mysql = require('mysql');
 const connection = require('./db.js');
-
 
 const createProductQuery = 'INSERT INTO products (ID) VALUES (?)';
 

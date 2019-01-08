@@ -11,7 +11,6 @@ app.use('/:productid', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser());
 
-
 app.get('/reviews/all/:productid', (req, res) => {
   const productId = req.params.productid;
   const thisQuery = 'SELECT * FROM reviews WHERE product_id = ?';
@@ -42,7 +41,7 @@ app.get('/reviews/average/:productid', (req, res) => {
   });
 });
 
-app.post('/reviews/helpful', (req, res) => {
+app.post('/reviews/helpful/:reviewId', (req, res) => {
   const thisId = req.params.reviewId;
   const thisQuery = 'UPDATE reviews SET found_helpful = found_helpful + 1 WHERE id = ?';
   console.log('post recieved');

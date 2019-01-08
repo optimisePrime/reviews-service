@@ -34,7 +34,7 @@ const ReviewList = function(props) {
                     {
                       reviewArray.map((item) => {
                         return (
-                            <Review review={item} key={item.id} />
+                            <Review helpful={props.helpful} review={item} key={item.id} />
                         )
                       })
                     }

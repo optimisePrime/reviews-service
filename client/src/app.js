@@ -1,8 +1,6 @@
 const React = require('react');
 const AverageReviews = require('./average_reviews');
 const ReviewArea = require('./review_area')
-const Router = require('react-router-dom').Router
-const Route = require('react-router-dom').Route
 const Switch = require('react-router-dom').Switch
 
 class App extends React.Component {
@@ -24,6 +22,7 @@ class App extends React.Component {
         this.handleNumberStarsClick = this.handleNumberStarsClick.bind(this);
         this.showAllReviews = this.showAllReviews.bind(this);
         this.handleSort = this.handleSort.bind(this);
+        this.handleHelpful = this.handleHelpful.bind(this);
     }
 
     componentDidMount() {
@@ -32,7 +31,7 @@ class App extends React.Component {
         test = test.split('/');
         product = test[test.length-2];
 
-        fetch('http://127.0.0.1:3001/reviews/all/' + product).then((data) => {
+        fetch('http://18.224.20.242:80/reviews/all/' + product).then((data) => {
             data.json().then((results) => {
                 let newState = Object.assign({}, this.state);
                 for (let i = 0; i < results.length; i++) {
@@ -45,6 +44,22 @@ class App extends React.Component {
                 this.setState(newState);
             })
         })
+    }
+
+    handleHelpful(value) {
+        console.log(value)
+        let newState = Object.assign({}, this.state);
+        for (let i = 0; i < newState.reviews.length; i++) {
+            if (newState.reviews[i].id === value) {
+                console.log(true);
+                newState.reviews[i].found_helpful += 1;
+                newState.filteredReviews = newState.reviews;
+                this.setState(newState);
+                fetch('http://18.224.20.242:80/reviews/helpful/' + value, {
+                    method: 'POST',
+                });
+            }
+        }
     }
 
     handleNumberStarsClick(value) {
@@ -109,7 +124,7 @@ class App extends React.Component {
                         <AverageReviews numberStarsClick={this.handleNumberStarsClick} averageScore={this.state.averageScore} numberStars={this.state.numberStars} numberReviews={this.state.reviews.length} />
                     </div>
                     <div className="rightReviewGrid" style={{ paddingLeft: "17.188px", }}>
-                        <ReviewArea handleSort={this.handleSort}reviews={this.state.filteredReviews} limited={this.state.showLimited} extend={this.showAllReviews} />
+                        <ReviewArea helpful={this.handleHelpful} handleSort={this.handleSort}reviews={this.state.filteredReviews} limited={this.state.showLimited} extend={this.showAllReviews} />
                     </div>
                 </div>
             </div>

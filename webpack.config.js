@@ -18,5 +18,5 @@ module.exports = {
       { test: /\.css$/, loader: 'style-loader!css-loader' },
     ],
   },
-  watch: true,
+  watch: false,
 };
