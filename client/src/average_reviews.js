@@ -39,7 +39,7 @@ const AverageReviews = function (props) {
             </div>
           </span>
           <span className="ratingBarRightTextBox">
-              <div className="ratingBarRightText">{(((props.numberStars[5] / props.numberReviews) * 100).toString() + "%")}</div>
+              <div className="ratingBarRightText">{(Math.floor((props.numberStars[5] / props.numberReviews) * 100).toString() + "%")}</div>
           </span>
         </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(4) }}>
@@ -52,7 +52,7 @@ const AverageReviews = function (props) {
               </div>
             </span>
             <span className="ratingBarRightTextBox">
-              <div className="ratingBarRightText">{(((props.numberStars[4] / props.numberReviews) * 100).toString() + "%")}</div>
+              <div className="ratingBarRightText">{(Math.floor((props.numberStars[4] / props.numberReviews) * 100).toString() + "%")}</div>
             </span>
           </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(3) }}>
@@ -65,7 +65,7 @@ const AverageReviews = function (props) {
               </div>
             </span>
             <span className="ratingBarRightTextBox">
-              <div className="ratingBarRightText">{(((props.numberStars[3] / props.numberReviews) * 100).toString() + "%")}</div>
+              <div className="ratingBarRightText">{(Math.floor((props.numberStars[3] / props.numberReviews) * 100).toString() + "%")}</div>
             </span>
           </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(2) }}>
@@ -78,7 +78,7 @@ const AverageReviews = function (props) {
               </div>
             </span>
             <span className="ratingBarRightTextBox">
-              <div className="ratingBarRightText">{(((props.numberStars[2] / props.numberReviews) * 100).toString() + "%")}</div>
+              <div className="ratingBarRightText">{(Math.floor((props.numberStars[2] / props.numberReviews) * 100).toString() + "%")}</div>
             </span>
           </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(1) }}>
@@ -91,7 +91,7 @@ const AverageReviews = function (props) {
               </div>
             </span>
             <span className="ratingBarRightTextBox">
-              <div className="ratingBarRightText">{(((props.numberStars[1] / props.numberReviews) * 100).toString() + "%")}</div>
+              <div className="ratingBarRightText">{(Math.floor((props.numberStars[1] / props.numberReviews) * 100).toString() + "%")}</div>
             </span>
           </tr>
       </tbody>

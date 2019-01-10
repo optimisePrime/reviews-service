@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "reviews",
   "version": "",
   "description": "",
   "author": "",
@@ -10,18 +10,21 @@
   "scripts": {
     "database": "mysql -u root -p <schema.sql",
     "faker": "node database/fake_data_generator.js",
-    "start": "webpack --mode production",
+    "start": "webpack --mode development",
     "test": "jest",
-    "server": "nodemon server/index.js"
+    "server": "nodemon server/index.js",
+    "react-dev": "webpack -d --watch"
   },
   "dependencies": {
     "babel": "^6.23.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "body-parser": "^1.18.3",
+    "cassandra-driver": "^4.0.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
+    "pg": "^7.7.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-router": "^4.3.1",
