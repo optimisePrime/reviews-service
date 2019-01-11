@@ -41,7 +41,6 @@ class App extends React.Component {
                     newState.numberStars[results.rows[i].score] += 1;
                 }
                 newState.averageScore = newState.averageScore / newState.reviews.length;
-                console.log(newState.numberStars)
                 this.setState(newState);
             })
         })
@@ -52,7 +51,6 @@ class App extends React.Component {
         let newState = Object.assign({}, this.state);
         for (let i = 0; i < newState.reviews.length; i++) {
             if (newState.reviews[i].id === value) {
-                console.log(true);
                 newState.reviews[i].found_helpful += 1;
                 newState.filteredReviews = newState.reviews;
                 this.setState(newState);

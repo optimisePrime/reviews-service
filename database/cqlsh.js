@@ -7,7 +7,11 @@ const client = new cassandra.Client({
 });
 
 client.connect((err) => {
-  throw(err);
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('connected')
+  }
 });
 
 
