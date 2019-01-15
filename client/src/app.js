@@ -40,7 +40,7 @@ class App extends React.Component {
                     newState.averageScore += results.rows[i].score;
                     newState.numberStars[results.rows[i].score] += 1;
                 }
-                newState.averageScore = newState.averageScore / newState.reviews.length;
+                newState.averageScore = Math.floor(newState.averageScore / newState.reviews.length * 10)/10;
                 this.setState(newState);
             })
         })
@@ -55,7 +55,7 @@ class App extends React.Component {
                 newState.filteredReviews = newState.reviews;
                 this.setState(newState);
                 fetch('/reviews/helpful/' + value, {
-                    method: 'POST',
+                    method: 'PUT',
                 });
             }
         }

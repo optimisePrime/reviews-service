@@ -1,4 +1,4 @@
-create table reviews (
+CREATE TABLE reviews (
   id int, 
   product_id int,
   username varchar, 
@@ -9,12 +9,8 @@ create table reviews (
   title varchar, 
   review_date timestamp,
   primary key (id)
-  );
+);
 
-  create table products (
-  product_id int primary key,
-  reviews 
-  );
+CREATE INDEX ON reviews (product_id);
 
-  insert into reviews (id, product_id, username, is_verified, review_text, score, found_helpful, title, review_date) 
-  values (1, 1, 'dfjksf', 1, 'djkdfgsdkfhsjkdfhaks', 4, 23, 'dfgsdlkgfds', '2018-04-12T07:00:00.000Z') ;
+ 
