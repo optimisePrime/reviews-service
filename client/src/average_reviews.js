@@ -30,69 +30,69 @@ const AverageReviews = function (props) {
       <table className="reviewRatingBars">
       <tbody>
         <tr className="reviewBarWrapper" onClick={function(){ props.numberStarsClick(5) }}>
-          <span className="ratingBarLeftTextBox">
+          <div className="ratingBarLeftTextBox">
               <div className="ratingBarLeftText">5 star</div>
-          </span>
-          <span className="ratingBarCell">
+          </div>
+          <div className="ratingBarCell">
             <div className="outerRatingBar">
               <div className="innerRatingBar" style={{ width: (((props.numberStars[5] / props.numberReviews) * 100).toString() + "%") }}></div>
             </div>
-          </span>
-          <span className="ratingBarRightTextBox">
+          </div>
+          <div className="ratingBarRightTextBox">
               <div className="ratingBarRightText">{(Math.floor((props.numberStars[5] / props.numberReviews) * 100).toString() + "%")}</div>
-          </span>
+          </div>
         </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(4) }}>
-            <span className="ratingBarLeftTextBox">
+            <div className="ratingBarLeftTextBox">
               <div className="ratingBarLeftText">4 star</div>
-            </span>
-            <span className="ratingBarCell">
+            </div>
+            <div className="ratingBarCell">
               <div className="outerRatingBar">
                 <div className="innerRatingBar" style={{ width: (((props.numberStars[4] / props.numberReviews) * 100).toString() + "%") }}></div>
               </div>
-            </span>
-            <span className="ratingBarRightTextBox">
+            </div>
+            <div className="ratingBarRightTextBox">
               <div className="ratingBarRightText">{(Math.floor((props.numberStars[4] / props.numberReviews) * 100).toString() + "%")}</div>
-            </span>
+            </div>
           </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(3) }}>
-            <span className="ratingBarLeftTextBox">
+            <div className="ratingBarLeftTextBox">
               <div className="ratingBarLeftText">3 star</div>
-            </span>
-            <span className="ratingBarCell">
+            </div>
+            <div className="ratingBarCell">
               <div className="outerRatingBar">
                 <div className="innerRatingBar" style={{ width: (((props.numberStars[3] / props.numberReviews) * 100).toString() + "%") }}></div>
               </div>
-            </span>
-            <span className="ratingBarRightTextBox">
+            </div>
+            <div className="ratingBarRightTextBox">
               <div className="ratingBarRightText">{(Math.floor((props.numberStars[3] / props.numberReviews) * 100).toString() + "%")}</div>
-            </span>
+            </div>
           </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(2) }}>
-            <span className="ratingBarLeftTextBox">
+            <div className="ratingBarLeftTextBox">
               <div className="ratingBarLeftText">2 star</div>
-            </span>
-            <span className="ratingBarCell">
+            </div>
+            <div className="ratingBarCell">
               <div className="outerRatingBar">
                 <div className="innerRatingBar" style={{ width: (((props.numberStars[2] / props.numberReviews) * 100).toString() + "%") }}></div>
               </div>
-            </span>
-            <span className="ratingBarRightTextBox">
+            </div>
+            <div className="ratingBarRightTextBox">
               <div className="ratingBarRightText">{(Math.floor((props.numberStars[2] / props.numberReviews) * 100).toString() + "%")}</div>
-            </span>
+            </div>
           </tr>
           <tr className="reviewBarWrapper" onClick={function () { props.numberStarsClick(1) }}>
-            <span className="ratingBarLeftTextBox">
+            <div className="ratingBarLeftTextBox">
               <div className="ratingBarLeftText">1 star</div>
-            </span>
-            <span className="ratingBarCell">
+            </div>
+            <div className="ratingBarCell">
               <div className="outerRatingBar">
                 <div className="innerRatingBar" style={{ width: (((props.numberStars[1] / props.numberReviews) * 100).toString() + "%") }}></div>
               </div>
-            </span>
-            <span className="ratingBarRightTextBox">
+            </div>
+            <div className="ratingBarRightTextBox">
               <div className="ratingBarRightText">{(Math.floor((props.numberStars[1] / props.numberReviews) * 100).toString() + "%")}</div>
-            </span>
+            </div>
           </tr>
       </tbody>
       </table>
