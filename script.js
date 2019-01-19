@@ -10,9 +10,9 @@ export let options = {
 let product_id = 0;
 let id = Math.floor(Math.random()*10)+1;
 if (id > 7){
-  product_id = Math.floor(Math.random()*9998000)+2000;
+  product_id = Math.floor(Math.random()*9999000)+1000;
 } else {
-  product_id = Math.floor(Math.random()*1000)+1000;
+  product_id = Math.floor(Math.random()*1000)+1;
 }
 
 // let product_id = Math.floor(Math.random()*9999000)+1000;

@@ -20,7 +20,7 @@ app.get('/reviews/all/:productid', (req, res) => {
     if (err){
       console.log(err);
     }
-    if (data){
+    if (data) {
       // console.log('Data retrived from redis', productId);
       res.send(JSON.parse(data));
     } else {

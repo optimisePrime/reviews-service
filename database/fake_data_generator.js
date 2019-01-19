@@ -46,42 +46,41 @@ const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verifie
 //   });
 // }
 
-// for (let i = 1; i <= 1000; i++) {
-//   let num = faker.random.number(500) + 100;
-//   for (let j = 0; j < num; j++) {
-//     const productId = i;
-//     const username = faker.internet.userName();
-//     const reviewText = faker.lorem.paragraph(1);
-//     const foundHelpful = faker.random.number(25)
-//     const score = faker.random.number(4) + 1;
-//     const title = faker.lorem.words(3);
-//     const date = faker.date.between('2010-01-01', '2018-12-1');
-//     const fakeData = [productId, username, 1, reviewText, score, foundHelpful, title, date];
-//     connection.query(createReviewQuery, fakeData, (err) => {
-//       if (err) {
-//         console.log('error adding review data')
-//         console.log(err);
-//       } 
-//     });
-//   }
-//   if (i%100 ===0){
-//     console.log(i + ' products created')
-//   }
-// }
+for (let i = 1; i <= 1000; i++) {
+  for (let j = 0; j < 10; j++) {
+    const productId = i;
+    const username = faker.internet.userName();
+    const reviewText = faker.lorem.paragraph(1);
+    const foundHelpful = faker.random.number(25)
+    const score = faker.random.number(4) + 1;
+    const title = faker.lorem.words(3);
+    const date = faker.date.between('2010-01-01', '2018-12-1');
+    const fakeData = [productId, username, 1, reviewText, score, foundHelpful, title, date];
+    connection.query(createReviewQuery, fakeData, (err) => {
+      if (err) {
+        console.log('error adding review data')
+        console.log(err);
+      } 
+    });
+  }
+  if (i%100 ===0){
+    console.log(i + ' products created')
+  }
+}
 
 
 //delete data (change product_id in query to delete all review data for the product_id)
 
 //psql
-let deleteQuery = 'DELETE FROM reviews where product_id = $1';
-for (let i=1; i<= 1000; i++){
-  let thisId = i;
-  connection.query(deleteQuery, [thisId], (err) => {
-    if (err) {
-      console.log(err);
-    } 
-});
-}
+// let deleteQuery = 'DELETE FROM reviews where product_id = $1';
+// for (let i=1; i<= 1000; i++){
+//   let thisId = i;
+//   connection.query(deleteQuery, [thisId], (err) => {
+//     if (err) {
+//       console.log(err);
+//     } 
+// });
+// }
 
 //cqlsh
 // connection.execute('DELETE FROM reviews where id = 1', {prepare: true}, (err) => {
