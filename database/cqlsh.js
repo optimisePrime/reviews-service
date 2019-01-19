@@ -10,7 +10,7 @@ client.connect((err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log('connected')
+    console.log('connected to cqlsh')
   }
 });
 

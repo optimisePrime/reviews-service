@@ -1,4 +1,5 @@
 const Pool = require('pg').Pool
+
 const pool = new Pool({
   user: 'zkliu',
   host: 'localhost',
@@ -11,7 +12,7 @@ pool.connect((err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log('connected')
+    console.log('connected to psql')
   }
 })
 

@@ -5,18 +5,12 @@ const moment = require('moment');
 
 const writer = csvWriter();
 
-writer.pipe(fs.createWriteStream('./CSVfiles/seed17.csv'));
+writer.pipe(fs.createWriteStream('./CSVfiles/seed18.csv'));
 
-let count = 34099996;
-let num1 = 9700000;
-let num = 10000000;
-
-for (let i = num1; i < num; i++) {
-  for (let j = 0; j < 3; j++) {
-    count++;
-    const id = count;
+for (let i = 1; i <= 1000; i++) {
+  for (let j = 0; j < 500; j++) {
     const productId = i;
-    const username = faker.internet.userName() + i;
+    const username = faker.internet.userName();
     const reviewText = faker.lorem.paragraph(1);
     const found_helpful = faker.random.number(25)
     const score = faker.random.number(4) + 1;
@@ -24,7 +18,6 @@ for (let i = num1; i < num; i++) {
     const date = moment().subtract(faker.random.number(1000), 'day').format('YYYY-MM-DD');
 
     const data = {
-      id: id,
       product_id : productId,
       username: username,
       review_text: reviewText,
@@ -37,11 +30,8 @@ for (let i = num1; i < num; i++) {
 
     writer.write(data);
     }
-  if ((i + 1) % 50000 === 0) {
+  if ((i + 1) % 100 === 0) {
     console.log(i+1, ' created');
-  }
-  if (i === num - 1) {
-    console.log(count);
   }
 
   
