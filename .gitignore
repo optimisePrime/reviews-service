@@ -7,3 +7,4 @@ database/CSVfiles/
 database/psqlseed/
 .pem
 sdc-reviews.pem
+newrelic.js

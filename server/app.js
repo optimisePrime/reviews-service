@@ -11,58 +11,115 @@ app.use('/:productid', express.static(path.join(__dirname, '../public')));
 // app.use(bodyParser());
 
 // psql routes
-const db = require('../database/psql.js')
-
-app.get('/reviews/all/:productid', (req, res) => {
-  const productId = req.params.productid;
-  const thisQuery = 'SELECT * FROM reviews WHERE product_id = $1';
-  redis.get(productId, (err, data)=>{
-    if (err){
-      console.log(err);
-    }
-    if (data) {
-      // console.log('Data retrived from redis', productId);
-      res.send(JSON.parse(data));
-    } else {
-      db.query(thisQuery, [productId], (error, results) => {
-        // console.log('Retriving data from psql for redis ', productId)
-        if (error) {
-          res.send(error);
-        } else {
-          res.send(results);
-          redis.set(productId, JSON.stringify(results), (err) => {
-            if (err) {
-              console.log(err);
-            }
-            // console.log('Wrote data to redis ', productId);
-          })
-        }
-      });
-    }
-  })
-});
+const psql = require('../database/psql.js')
 
 // app.get('/reviews/all/:productid', (req, res) => {
 //   const productId = req.params.productid;
 //   const thisQuery = 'SELECT * FROM reviews WHERE product_id = $1';
-//   db.query(thisQuery, [productId], (error, results) => {
-//     if (error) {
-//       res.send(error);
-//     } else {
-//       res.send(results);
+//   redis.get(productId, (err, data)=>{
+//     if (err){
+//       console.log(err);
+//       // psql.query(thisQuery, [productId], (error, results) => {
+//       //   // console.log('Retriving data from psql because of redis error', productId)
+//       //   if (error) {
+//       //     res.send(error);
+//       //   } else {
+//       //     res.send(results);
+//       //   }
+//       // });
 //     }
-//   });
+//     if (data) {
+//       // console.log('Data retrived from redis', productId);
+//       res.send(JSON.parse(data));
+//     } else {
+//       psql.query(thisQuery, [productId], (error, results) => {
+//         // console.log('Retriving data from psql for redis ', productId)
+//         if (error) {
+//           res.send(error);
+//         } else {
+//           res.send(results);
+//           redis.set(productId, JSON.stringify(results), (err) => {
+//             if (err) {
+//               console.log(err);
+//             }
+//             // console.log('Wrote data to redis ', productId);
+//           })
+//         }
+//       });
+//     }
+//   })
 // });
+
+// app.get('/reviews/all/:productid', (req, res) => {
+//   const productId = req.params.productid;
+//   const thisQuery = 'SELECT * FROM reviews WHERE product_id = $1';
+//   if (productId < 1001) {
+//     redis.get(productId, (err, data)=>{
+//       if (err){
+//         console.log(err);
+//         // psql.query(thisQuery, [productId], (error, results) => {
+//         //   // console.log('Retriving data from psql because of redis error', productId)
+//         //   if (error) {
+//         //     res.send(error);
+//         //   } else {
+//         //     res.send(results);
+//         //   }
+//         // });
+//       }
+//       if (data) {
+//         // console.log('Data retrived from redis', productId);
+//         res.send(JSON.parse(data));
+//       } else {
+//         psql.query(thisQuery, [productId], (error, results) => {
+//           // console.log('Retriving data from psql for redis ', productId)
+//           if (error) {
+//             res.send(error);
+//           } else {
+//             res.send(results);
+//             redis.set(productId, JSON.stringify(results), (err) => {
+//               if (err) {
+//                 console.log(err);
+//               }
+//               // console.log('Wrote data to redis ', productId);
+//             })
+//           }
+//         });
+//       }
+//     })
+//   } else {
+//       psql.query(thisQuery, [productId], (error, results) => {
+//         // console.log('Retriving data from psql', productId)
+//         if (error) {
+//           res.send(error);
+//         } else {
+//           res.send(results);
+//         }
+//       });
+//     }
+// });
+
+
+app.get('/reviews/all/:productid', (req, res) => {
+  const productId = req.params.productid;
+  const thisQuery = 'SELECT * FROM reviews WHERE product_id = $1';
+  psql.query(thisQuery, [productId], (error, results) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(results);
+    }
+  });
+});
 
 app.put('/reviews/helpful/:reviewId', (req, res) => {
   const thisId = req.params.reviewId;
   const thisQuery = 'UPDATE reviews SET found_helpful = found_helpful + 1 WHERE id = $1';
-  db.query(thisQuery, [thisId], (err) => {
+  psql.query(thisQuery, [thisId], (err) => {
     if (err) {
       res.send(err);
     } else {
       const secondQuery = 'SELECT * FROM reviews WHERE id = $1';
-      db.query(secondQuery, [thisId], (error, results) => {
+      psql.query(secondQuery, [thisId], (error, results) => {
         if (error) {
           res.send(error);
         } else {
@@ -84,7 +141,7 @@ app.post('/reviews/helpful/:productid', (req, res) => {
   const date = faker.date.between('2010-01-01', '2018-12-1');
   const fakeData = [productId, username, 1, reviewText, score, foundHelpful, title, date];
   const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verified, review_text, score, found_helpful, title, review_date) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)';
-  db.query(createReviewQuery, fakeData, (error, results) => {
+  psql.query(createReviewQuery, fakeData, (error, results) => {
     if (error) {
       console.log(error)
       res.send(error);
@@ -98,7 +155,7 @@ app.delete('/reviews/helpful/:reviewId', (req, res) => {
   const thisId = req.params.reviewId;
   const deleteQuery = 'DELETE FROM reviews where id = $1';
   console.log('post recieved');
-  db.query(deleteQuery, [thisId], (err) => {
+  psql.query(deleteQuery, [thisId], (err) => {
     if (err) {
       console.log(err);
       res.send(err);
@@ -109,11 +166,11 @@ app.delete('/reviews/helpful/:reviewId', (req, res) => {
 });
 
 //cqlsh routes
-// const db = require('../database/cqlsh.js')
+// const cqlsh = require('../database/cqlsh.js')
 // app.get('/reviews/all/:productid', (req, res) => {
 //   const productId = req.params.productid;
 //   const thisQuery = 'SELECT * FROM reviews WHERE product_id = ?';
-//   db.execute(thisQuery, [productId], {prepare: true}, (error, results) => {
+//   cqlsh.execute(thisQuery, [productId], {prepare: true}, (error, results) => {
 //     if (error) {
 //       res.send(error);
 //     } else {
@@ -127,13 +184,13 @@ app.delete('/reviews/helpful/:reviewId', (req, res) => {
 //   const thisId = req.params.reviewId;
 //   const firstQuery = 'SELECT * FROM reviews WHERE id = ?';
 //   const secondQuery = 'UPDATE reviews SET found_helpful = ? WHERE id = ?';
-//   db.execute(firstQuery, [thisId], {prepare: true}, (error, results) => {
+//   cqlsh.execute(firstQuery, [thisId], {prepare: true}, (error, results) => {
 //     if (error) {
 //       console.log(error)
 //     } else {
 //       console.log(results.rows[0].found_helpful)
 //       let found = results.rows[0].found_helpful + 1;
-//       db.execute(secondQuery, [found, thisId], {prepare: true}, (error, results) => {
+//       cqlsh.execute(secondQuery, [found, thisId], {prepare: true}, (error, results) => {
 //         if (error) {
 //           res.send(error);
 //         } else {
@@ -156,7 +213,7 @@ app.delete('/reviews/helpful/:reviewId', (req, res) => {
 //   const date = faker.date.between('2010-01-01', '2018-12-1');
 //   const fakeData = [id, productId, username, 1, reviewText, score, foundHelpful, title, date];
 //   const createReviewQuery = 'INSERT INTO reviews (id, product_id, username, is_verified, review_text, score, found_helpful, title, review_date) VALUES (?,?,?,?,?,?,?,?,?)';
-//   db.execute(createReviewQuery, fakeData, {prepare: true}, (error, results) => {
+//   cqlsh.execute(createReviewQuery, fakeData, {prepare: true}, (error, results) => {
 //     if (error) {
 //       console.log(error)
 //       res.send(error);
@@ -171,7 +228,7 @@ app.delete('/reviews/helpful/:reviewId', (req, res) => {
 //   const thisId = req.params.reviewId;
 //   const deleteQuery = 'DELETE FROM reviews where id = ?';
 //   console.log('post recieved');
-//   db.execute(deleteQuery, [thisId], (err) => {
+//   cqlsh.execute(deleteQuery, [thisId], (err) => {
 //     if (err) {
 //       console.log(err);
 //       res.send(err);

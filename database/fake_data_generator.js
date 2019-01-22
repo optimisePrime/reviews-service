@@ -46,8 +46,8 @@ const createReviewQuery = 'INSERT INTO reviews (product_id, username, is_verifie
 //   });
 // }
 
-for (let i = 1; i <= 1000; i++) {
-  for (let j = 0; j < 10; j++) {
+for (let i = 1; i <= 10; i++) {
+  for (let j = 0; j < 5; j++) {
     const productId = i;
     const username = faker.internet.userName();
     const reviewText = faker.lorem.paragraph(1);
